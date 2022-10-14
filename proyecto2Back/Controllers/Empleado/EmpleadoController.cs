@@ -28,7 +28,7 @@ public class EmpleadoController : ControllerBase
         {
             using (var db = new MySqlConnection(conf.GetConnectionString("dbconnection")))
             {
-                var sql = @"select * from empleado e inner join usuario u on u.id_empleado=e.id_empleado where u.estado=1 ";
+                var sql = @"select nombres,apellidos, u.id_usuario as id_empleado from empleado e inner join usuario u on u.id_empleado=e.id_empleado where u.estado=1 ";
 
                 lst = db.Query<Models.Empleado.Empleado>(sql);
                 Json = JsonConvert.SerializeObject(lst);
