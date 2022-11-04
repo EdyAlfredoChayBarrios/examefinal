@@ -1,4 +1,4 @@
-﻿namespace proyecto2Back.Models.Historial
+﻿namespace proyecto3Back.Models.Historial
 {
     public class HistorialModels
     {

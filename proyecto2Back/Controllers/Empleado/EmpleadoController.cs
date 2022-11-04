@@ -1,9 +1,9 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
+using Npgsql;
 using Newtonsoft.Json;
 
-namespace proyecto2Back.Controllers.Empleado;
+namespace proyecto3Back.Controllers.Empleado;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -26,7 +26,7 @@ public class EmpleadoController : ControllerBase
         var Json = JsonConvert.SerializeObject(lst);
         try
         {
-            using (var db = new MySqlConnection(conf.GetConnectionString("dbconnection")))
+            using (var db = new NpgsqlConnection(conf.GetConnectionString("dbconnection")))
             {
                 var sql = @"select nombres,apellidos, u.id_usuario as id_empleado from empleado e inner join usuario u on u.id_empleado=e.id_empleado where u.estado=1 ";
 
@@ -50,7 +50,7 @@ public class EmpleadoController : ControllerBase
      
         try
         {
-            using (var db = new MySqlConnection(conf.GetConnectionString("dbconnection")))
+            using (var db = new NpgsqlConnection(conf.GetConnectionString("dbconnection")))
             {
                 var sql = string.Format(@"update usuario set estado=0 where id_usuario={0} ",idUsuario);
 
@@ -76,7 +76,7 @@ public class EmpleadoController : ControllerBase
         var Json = JsonConvert.SerializeObject(lst);
         try
         {
-            using (var db = new MySqlConnection(conf.GetConnectionString("dbconnection")))
+            using (var db = new NpgsqlConnection(conf.GetConnectionString("dbconnection")))
             {
                 var sql = string.Format(@"select * from historial_emp where id_usuario={0} ",idUsuario);
 

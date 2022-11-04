@@ -1,13 +1,14 @@
 ﻿namespace proyecto3Back.Models.Empleado
 {
-    public class Empleado
+    public class EmpleadoTarde
     {
-        public int id_empleado { get; set; }
-
         public string nombres { get; set; }
 
         public string apellidos { get; set; }
 
-        public string dpi { get; set; }
+        public string entrada_tarde { get; set; }
+
+        public string salida_tarde { get; set; }
+
     }
 }

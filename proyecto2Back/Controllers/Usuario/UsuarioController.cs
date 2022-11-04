@@ -1,11 +1,11 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
-using proyecto2Back.Models.Usuario;
+using Npgsql;
+using proyecto3Back.Models.Usuario;
 using Newtonsoft.Json;
 using Google.Protobuf.WellKnownTypes;
 
-namespace proyecto2Back.Controllers.Usuario;
+namespace proyecto3Back.Controllers.Usuario;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -26,7 +26,7 @@ public class UsuarioController : ControllerBase
         var Json = JsonConvert.SerializeObject(lst);
         try
         {
-            using (var db = new MySqlConnection(conf.GetConnectionString("dbconnection")))
+            using (var db = new NpgsqlConnection(conf.GetConnectionString("dbconnection")))
             {
                 var sql = @"
                     select * from usuario u 
@@ -71,7 +71,7 @@ public class UsuarioController : ControllerBase
         int idEmpleado = 0;
         try
         {
-            using (var db = new MySqlConnection(conf.GetConnectionString("dbconnection")))
+            using (var db = new NpgsqlConnection(conf.GetConnectionString("dbconnection")))
             {
                 var sql = string.Format("INSERT INTO empleado (nombres,apellidos,dpi) VALUES ('{0}','{1}','{2}');",registro.nombre,registro.apellido,registro.dpi);
 

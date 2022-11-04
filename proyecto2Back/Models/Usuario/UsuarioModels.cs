@@ -1,4 +1,4 @@
-﻿namespace proyecto2Back.Models.Usuario
+﻿namespace proyecto3Back.Models.Usuario
 {
     public class UsuarioModels
     {
