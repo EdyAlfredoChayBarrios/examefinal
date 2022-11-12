@@ -1,6 +1,6 @@
 ﻿namespace proyecto3Back.Models.Departamento
 {
-    public class Departamento
+    public class Calculo
     {
         public string id_departamento { get; set; }
 
